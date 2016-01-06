@@ -40,6 +40,9 @@
     "url": "https://github.com/gulp-cookery/gulp-ccr-watch/issues"
   },
   "homepage": "https://github.com/gulp-cookery/gulp-ccr-watch#readme",
+  "peerDependencies": {
+    "gulp-chef": "git+https://github.com/gulp-cookery/gulp-chef.git"
+  },
   "devDependencies": {
     "mocha": "^2.3.4",
     "mocha-cases": "^0.1.4"

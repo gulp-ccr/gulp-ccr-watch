@@ -1,18 +1,20 @@
 {
   "name": "gulp-ccr-watch",
   "version": "0.1.0",
-  "description": "Configurable gulp recipe plugin that ...",
+  "description": "Cascading Configurable Gulp Recipe for gulp-chef that ...",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gulp-ccr/gulp-ccr-watch.git"
+    "url": "git+https://github.com/gulp-cookery/gulp-ccr-watch.git"
   },
   "keywords": [
     "gulp",
     "gulp 4.0",
+	"gulp-cookery",
+	"gulp-chef",
     "gulp-ccr",
     "configurable-gulp-recipe",
     "configurable-gulp-recipes",
@@ -23,6 +25,7 @@
     "gulp tasks",
     "gulp recipe",
     "gulp recipes",
+	"cookery",
     "plugin",
     "plugins",
     "recipe",
@@ -34,15 +37,15 @@
   "author": "Amobiz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gulp-ccr/gulp-ccr-watch/issues"
+    "url": "https://github.com/gulp-cookery/gulp-ccr-watch/issues"
   },
-  "homepage": "https://github.com/gulp-ccr/gulp-ccr-watch#readme",
+  "homepage": "https://github.com/gulp-cookery/gulp-ccr-watch#readme",
   "devDependencies": {
     "mocha": "^2.3.4",
     "mocha-cases": "^0.1.4"
   },
   "dependencies": {
-    "gulp-ccr-helper": "git+https://github.com/gulp-ccr/gulp-ccr-helper.git",
+    "gulp-ccr-helper": "git+https://github.com/gulp-cookery/gulp-ccr-helper.git",
     "gulp-util": "^3.0.7"
   }
 }

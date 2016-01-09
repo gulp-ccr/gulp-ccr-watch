@@ -1,40 +1,46 @@
-/* eslint consistent-this: 0 */
 'use strict';
 
 /**
- * 基本想法：
+ * Watch
+ *   Watch source files of a bunch of specific tasks and run corresponding task when a file changes.
+ *
+ * zh_TW：
  *   watch 只要指定相依的 task 即可。
- *   然後自動由相依的 task 找出需要監控的對應檔案，
- *   並在檔案變動時，自動執行相關的 task。
+ *   然後自動由相依的 task 找出需要監控的對應檔案，並在檔案變動時，自動執行對應的 task。
  *
  * Recipe:
- * watch
+ *   watch
  *
  * Ingredients:
- * gulp.watch()
+ *   browser-sync
+ *   gulp.watch()
  *
  */
 function watch() {
-	var context = this;
-	var gulp = context.gulp;
-	var tasks = context.tasks;
-	var options = context.config.options || {};
+	var browserSync = require('browser-sync');
+	var log = require('gulplog');
 
-	// watch tasks' sources
+	var gulp = this.gulp;
+	var options = this.config.options || {};
+	var tasks = this.tasks || [];
+
 	tasks.forEach(function (task) {
 		if (task.config && task.config.src) {
-			gulp.watch(task.config.src.globs, options, task);
+			log.info('watch', 'watching ' + JSON.stringify(task.config.src.globs) + ' for ' + task.displayName);
+			gulp.watch(task.config.src.globs, options, task)
+				.on('change', browserSync.reload);
 		}
 	});
 }
 
 watch.schema = {
 	title: 'watch',
-	description: 'see https://github.com/paulmillr/chokidar for options',
+	description: 'Watch source files of a bunch of specific tasks and run corresponding task when a file changes.',
 	type: 'object',
 	properties: {
 		options: {
 			properties: {
+				browserSync: {},
 				persistent: {},
 				ignored: {},
 				ignoreInitial: {},

@@ -21,16 +21,38 @@ function watch() {
 	var log = require('gulplog');
 
 	var gulp = this.gulp;
-	var options = this.config.options || {};
+	var config = this.config;
+	var options = config.options || {};
 	var tasks = this.tasks || [];
 
+	if (config.run) {
+		// run tasks before watch.
+	}
+
 	tasks.forEach(function (task) {
-		if (task.config && task.config.src) {
-			log.info('watch', 'watching ' + JSON.stringify(task.config.src.globs) + ' for ' + task.displayName);
-			gulp.watch(task.config.src.globs, options, task)
-				.on('change', browserSync.reload);
+		var src;
+
+		src = sources([], task);
+		if (src.length) {
+			log.info('watch', 'watching ' + JSON.stringify(src) + ' for ' + task.displayName);
+			gulp.watch(src, options, task).on('change', browserSync.reload);
+		} else {
+			log.warn('watch', 'warning', task.displayName + ' has no `src` property.');
 		}
 	});
+
+	// recursively add child task's sources.
+	function sources(result, task) {
+		var ret = result;
+
+		if (task.config && task.config.src) {
+			ret = ret.concat(task.config.src.globs);
+		}
+		if (task.tasks) {
+			ret = task.tasks.reduce(sources);
+		}
+		return ret;
+	}
 }
 
 watch.schema = {
@@ -38,9 +60,16 @@ watch.schema = {
 	description: 'Watch source files of a bunch of specific tasks and run corresponding task when a file changes.',
 	type: 'object',
 	properties: {
+		run: {
+			description: 'Run tasks before watch.',
+			type: 'boolean'
+		},
+		browserSync: {
+			description: 'Options for browser-sync.',
+			type: 'object'
+		},
 		options: {
 			properties: {
-				browserSync: {},
 				persistent: {},
 				ignored: {},
 				ignoreInitial: {},

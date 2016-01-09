@@ -57,7 +57,7 @@ function watch() {
 
 watch.schema = {
 	title: 'watch',
-	description: 'Watch source files of a bunch of specific tasks and run corresponding task when a file changes.',
+	description: 'Watch source files of specific tasks and run corresponding task when a file changes.',
 	type: 'object',
 	properties: {
 		run: {
@@ -66,7 +66,22 @@ watch.schema = {
 		},
 		browserSync: {
 			description: 'Options for browser-sync.',
-			type: 'object'
+			anyOf: [{
+				description: 'Identifier of the browser-sync instance. This allows you share browser-sync instance among tasks.',
+				type: 'string'
+			}, {
+				type: 'object',
+				propertyes: {
+					name: {
+						description: 'Identifier of the browser-sync instance. This allows you share browser-sync instance among tasks.',
+						type: 'string'
+					},
+					options: {
+						description: 'See https://www.browsersync.io/docs/options/ for options.',
+						type: 'object'
+					}
+				}
+			}]
 		},
 		options: {
 			properties: {

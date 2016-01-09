@@ -7,8 +7,10 @@ A cascading configurable gulp recipe for [gulp-chef](https://github.com/gulp-coo
 npm install gulp-ccr-watch
 ```
 ## Configuration
+File watching is provided by the [chokidar](https://github.com/paulmillr/chokidar) module. Please report any file watching problems directly to its [issue tracker](https://github.com/paulmillr/chokidar/issues).
+
 ### options
-See https://github.com/paulmillr/chokidar for options.
+Options that are passed to chokidar. See [chokidar's API](https://github.com/paulmillr/chokidar#api) for options.
 
 ### task
 Tasks to take care of.
@@ -16,22 +18,22 @@ Tasks to take care of.
 ## Configuration Example
 ```javascript
 {
-	scripts: {
-		src: '**/*.js'
-		task: function (done) {}
-	},
-	styles: {
-		src: '**/*.css',
-		task: function (done) {}
-	},
-	watch: ['scripts', 'styles'],
-	wpoll: {
-		watch: {
-			options: {
-				usePolling: true
-			},
-			task: ['scripts', 'styles']
-		}
-	}
+    scripts: {
+        src: '**/*.js'
+        task: function (done) {}
+    },
+    styles: {
+        src: '**/*.css',
+        task: function (done) {}
+    },
+    watch: ['scripts', 'styles'],
+    wpoll: {
+        watch: {
+            options: {
+                usePolling: true
+            },
+            task: ['scripts', 'styles']
+        }
+    }
 }
 ```

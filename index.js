@@ -2,7 +2,7 @@
 
 /**
  * Watch
- *   Watch source files of a bunch of specific tasks and run corresponding task when a file changes.
+ *   Watch source files of specific tasks and run corresponding task when a file changes.
  *
  * zh_TW：
  *   watch 只要指定相依的 task 即可。
@@ -25,17 +25,13 @@ function watch() {
 	var options = config.options || {};
 	var tasks = this.tasks || [];
 
-	if (config.run) {
-		// run tasks before watch.
-	}
-
 	tasks.forEach(function (task) {
 		var src;
 
 		src = sources([], task);
 		if (src.length) {
 			log.info('watch', 'watching ' + JSON.stringify(src) + ' for ' + task.displayName);
-			gulp.watch(src, options, task).on('change', browserSync.reload);
+			gulp.watch(src, options, task).on('all', browserSync.reload);
 		} else {
 			log.warn('watch', 'warning', task.displayName + ' has no `src` property.');
 		}
@@ -60,10 +56,6 @@ watch.schema = {
 	description: 'Watch source files of specific tasks and run corresponding task when a file changes.',
 	type: 'object',
 	properties: {
-		run: {
-			description: 'Run tasks before watch.',
-			type: 'boolean'
-		},
 		browserSync: {
 			description: 'Options for browser-sync.',
 			anyOf: [{

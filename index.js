@@ -2,7 +2,7 @@
 
 /**
  * Watch
- *   Watch source files of specific tasks and run corresponding task when a file changes.
+ *   Watch source files of specific tasks and their descendants and run corresponding task when a file changes.
  *
  * zh_TW：
  *   watch 只要指定相依的 task 即可。
@@ -53,7 +53,7 @@ function watch() {
 
 watch.schema = {
 	title: 'watch',
-	description: 'Watch source files of specific tasks and run corresponding task when a file changes.',
+	description: 'Watch source files of specific tasks and their descendants and run corresponding task when a file changes.',
 	type: 'object',
 	properties: {
 		browserSync: {

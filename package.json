@@ -1,7 +1,7 @@
 {
   "name": "gulp-ccr-watch",
   "version": "0.1.0",
-  "description": "Watch source files of specific tasks and run corresponding task when a file changes. A cascading configurable gulp recipe for gulp-chef.",
+  "description": "Watch source files of specific tasks and their descendants and run corresponding task when a file changes. A cascading configurable gulp recipe for gulp-chef.",
   "main": "index.js",
   "scripts": {
     "test": "mocha"

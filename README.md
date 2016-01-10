@@ -1,5 +1,5 @@
 # gulp-ccr-watch
-Watch source files of specific tasks and run corresponding task when a file changes.
+Watch source files of specific tasks and their descendants and run corresponding task when a file changes.
 A cascading configurable gulp recipe for [gulp-chef](https://github.com/gulp-cookery/gulp-chef).
 
 ## Install

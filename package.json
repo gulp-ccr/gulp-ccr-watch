@@ -19,8 +19,8 @@
     "configurable-gulp-recipe",
     "configurable-gulp-recipes",
     "watch",
-	"browser-sync",
-	"reload",
+    "browser-sync",
+    "reload",
     "task",
     "tasks",
     "gulp task",
@@ -28,13 +28,13 @@
     "gulp recipe",
     "gulp recipes",
     "cookery",
-	"cook",
-	"cookbook",
+    "cook",
+    "cookbook",
     "plugin",
     "plugins",
     "recipe",
     "recipes",
-	"cascading",
+    "cascading",
     "configurable",
     "configuration",
     "configurations"
@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "browser-sync": "^2.11.0",
-    "gulp-ccr-helper": "git+https://github.com/gulp-cookery/gulp-ccr-helper.git",
+    "gulp-ccr-config-helper": "git+https://github.com/gulp-cookery/gulp-ccr-config-helper.git",
     "gulplog": "^1.0.0"
   }
 }

@@ -45,7 +45,7 @@ function watch() {
 			ret = ret.concat(task.config.src.globs);
 		}
 		if (task.tasks) {
-			ret = task.tasks.reduce(sources);
+			ret = task.tasks.reduce(sources, ret);
 		}
 		return ret;
 	}

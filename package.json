@@ -27,7 +27,6 @@
     "gulp tasks",
     "gulp recipe",
     "gulp recipes",
-    "cookery",
     "cook",
     "cookbook",
     "plugin",
@@ -46,7 +45,7 @@
   },
   "homepage": "https://github.com/gulp-cookery/gulp-ccr-watch#readme",
   "peerDependencies": {
-    "gulp-chef": "git+https://github.com/gulp-cookery/gulp-chef.git"
+    "gulp-chef": "^0.1.0"
   },
   "devDependencies": {
     "mocha": "^2.3.4",
@@ -54,7 +53,7 @@
   },
   "dependencies": {
     "browser-sync": "^2.11.0",
-    "gulp-ccr-config-helper": "git+https://github.com/gulp-cookery/gulp-ccr-config-helper.git",
+    "gulp-ccr-config-helper": "^0.1.0",
     "gulplog": "^1.0.0"
   }
 }

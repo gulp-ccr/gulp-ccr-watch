@@ -60,10 +60,55 @@ var meals = chef({
             server: '{{dest.path}}'
         }
     },
-    build: ['markups', 'styles'],
     watch: ['markups', 'styles'],
+    build: { parallel: ['markups', 'styles'] },
     serve: ['build', 'browserSync', 'watch']
 });
 
 gulp.registry(meals);
+```
+
+This roughly do the same thing as the following normal gulp construct:
+
+``` javascript
+var gulp = require('gulp');
+var less = require('gulp-less');
+var sync = require('browser-sync');
+
+var config = {
+    dest: 'dist/',
+    markups: 'app/**/*.html',
+    styles: 'app/**/*.less'
+};
+
+function markups() {
+    return gulp.src(config.markups)
+        .pipe(gulp.dest(config.dest));
+}
+
+function styles() {
+    return gulp.src(config.styles)
+        .pipe(less())
+        .pipe(gulp.dest(config.dest));
+}
+
+function browserSync() {
+    sync({
+        server: config.dest
+    });
+}
+
+function watch() {
+    gulp.watch(config.markups, markups)
+        .on('change', sync.reload);
+    gulp.watch(config.styles, styles)
+        .on('change', sync.reload);
+}
+
+gulp.task(markups);
+gulp.task(styles);
+gulp.task(watch);
+gulp.task('build', gulp.parallel(markups, styles));
+gulp.task('serve', gulp.series('build', browserSync, watch));
+
 ```

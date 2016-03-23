@@ -112,3 +112,9 @@ gulp.task('build', gulp.parallel(markups, styles));
 gulp.task('serve', gulp.series('build', browserSync, watch));
 
 ```
+
+## License
+[MIT](https://opensource.org/licenses/MIT)
+
+## Author
+[Amobiz](https://github.com/amobiz)
